@@ -33,4 +33,17 @@ public class StringCalculatorTest {
         assertEquals(0, stringCalculator.add(""));
     }
 
+    @Test
+    public void for2NumbersSeparatedByComma()
+    {
+        assertEquals(6, stringCalculator.add("2,4"));
+    }
+
+    @Test
+    public void for5NumbersSeparatedByComma()
+    {
+        assertEquals(15, stringCalculator.add("1,2,3,4,5"));
+    }
+
+
 }
