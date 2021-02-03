@@ -1,5 +1,6 @@
 package com.tdd.app;
 
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -20,7 +21,7 @@ public class StringCalculator {
         }
 
         String[] numbersToBeAdded = Parser.extractNumbers(numbers, ",","\n");
-
+        throwsExceptionIfAtLeastOneNegative(numbersToBeAdded);
         return addNumbers(numbersToBeAdded);
 
     }
@@ -31,5 +32,18 @@ public class StringCalculator {
     public int addNumbers(String[] numbers)
     {
         return Stream.of(numbers).mapToInt(Integer::parseInt).sum();
+    }
+
+    /**
+     * throw exception if any of the numbers found negative
+     * @param addednums
+     */
+    private void throwsExceptionIfAtLeastOneNegative(String[] addednums) {
+        String negatives = Stream.of(addednums)
+                .filter(addendum -> Integer.parseInt(addendum) < 0)
+                .collect(Collectors.joining(", "));
+
+        if (!negatives.isEmpty())
+            throw new IllegalArgumentException("negatives not allowed: " + negatives);
     }
 }

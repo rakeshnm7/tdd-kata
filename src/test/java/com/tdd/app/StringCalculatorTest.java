@@ -2,7 +2,10 @@ package com.tdd.app;
 
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -14,6 +17,8 @@ public class StringCalculatorTest {
 
     private StringCalculator stringCalculator;
 
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
 
     @Before
     public void setup()
@@ -61,6 +66,16 @@ public class StringCalculatorTest {
     public void forSupportingDifferentDelimiters()
     {
         assertEquals(3, stringCalculator.add("//;\n1;2"));
+    }
+
+    @Test
+    public void forNegativeNumbersThrowsException()
+    {
+
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("negatives not allowed: -4");
+
+        stringCalculator.add("0,1,2,3,-4,5");
     }
 
 
