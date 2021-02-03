@@ -19,7 +19,7 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] numbersToBeAdded = numbers.split(",");
+        String[] numbersToBeAdded = Parser.extractNumbers(numbers, ",","\n");
 
         return addNumbers(numbersToBeAdded);
 

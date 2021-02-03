@@ -34,6 +34,12 @@ public class StringCalculatorTest {
     }
 
     @Test
+    public void forSingleNumberReturnsSameNumber()
+    {
+        assertEquals(10, stringCalculator.add("10"));
+    }
+
+    @Test
     public void for2NumbersSeparatedByComma()
     {
         assertEquals(6, stringCalculator.add("2,4"));
@@ -45,5 +51,10 @@ public class StringCalculatorTest {
         assertEquals(15, stringCalculator.add("1,2,3,4,5"));
     }
 
+    @Test
+    public void forSupportingNewLines()
+    {
+        assertEquals(6, stringCalculator.add("1\n2,3"));
+    }
 
 }
