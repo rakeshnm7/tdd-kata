@@ -78,6 +78,17 @@ public class StringCalculatorTest {
         stringCalculator.add("0,1,2,3,-4,5");
     }
 
+    @Test
+    public void forMultipleNegativeNumbersThrowsException()
+    {
+
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("negatives not allowed: -4, -5, -15");
+
+        stringCalculator.add("0,1,2,3,-4,-5,-15");
+    }
+
+
 
     @Test
     public void forIgnoringNumbersGreaterThan1000()
