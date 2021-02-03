@@ -79,4 +79,11 @@ public class StringCalculatorTest {
     }
 
 
+    @Test
+    public void forIgnoringNumbersGreaterThan1000()
+    {
+        assertEquals(5,stringCalculator.add("1001,5"));
+    }
+
+
 }

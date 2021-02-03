@@ -31,7 +31,7 @@ public class StringCalculator {
      */
     public int addNumbers(String[] numbers)
     {
-        return Stream.of(numbers).mapToInt(Integer::parseInt).sum();
+        return Stream.of(numbers).mapToInt(Integer::parseInt).filter(number -> number <= 1000).sum();
     }
 
     /**
